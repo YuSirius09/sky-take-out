@@ -18,6 +18,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
+
 public class ShoppingCartServiceImpl implements ShoppingCartService {
     @Autowired
     private ShoppingCartMapper shoppingCartMapper;
@@ -74,5 +75,12 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
                 builder().
                 userId(BaseContext.getCurrentId()).
                 build());
+    }
+
+    /**
+     * 清空购物车商品
+     */
+    public void cleanShoppingCart() {
+        shoppingCartMapper.deleteByUserId(BaseContext.getCurrentId());
     }
 }
