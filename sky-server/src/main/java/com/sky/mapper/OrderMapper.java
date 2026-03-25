@@ -40,13 +40,6 @@ public interface OrderMapper {
     Page<Orders> pageQuery(OrdersPageQueryDTO ordersPageQueryDTO);
 
     /**
-     * 根据id查询订单
-     * @param id
-     */
-    @Select("select * from orders where id=#{id}")
-    Orders getById(Long id);
-
-    /**
      * 根据状态统计订单数量
      * @param status
      */
@@ -61,4 +54,12 @@ public interface OrderMapper {
      */
     @Select("select * from orders where status = #{status} and order_time < #{orderTime}")
     List<Orders> getByStatusAndOrdertimeLT(Integer status, LocalDateTime orderTime);
+
+    /**
+     * 根据id查询订单
+     * @param id
+     * @return
+     */
+    @Select("select * from orders where id = #{id}")
+    Orders getById(Long id);
 }
